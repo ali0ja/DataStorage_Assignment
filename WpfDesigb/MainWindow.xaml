@@ -1,0 +1,138 @@
+﻿<Window x:Class="WpfDesigb.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfDesigb"
+        mc:Ignorable="d"
+            Title="EC Project" Height="700" Width="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Margin="2" Background="#102349" Width="250" HorizontalAlignment="Center" BorderThickness="2" BorderBrush="Gray">
+            <StackPanel>
+                <Button Margin="20,20" Background="#3E454C" Height="50" Foreground="White" FontSize="20" Name="btnHome" Click="btnHome_Click">Home</Button>
+                <Button Margin="20,20" Background="#3E454C" Height="50" Foreground="White" FontSize="20" Name="btnCustomer" Click="btnCustomer_Click">Customers</Button>
+                <Button Margin="20,20" Background="#3E454C" Height="50" Foreground="White" FontSize="20" Name="btnEmployees" Click="btnEmployees_Click">Employees</Button>
+                <Button Margin="20,20" Background="#3E454C" Height="50" Foreground="White" FontSize="20" Name="btnProduct" Click="btnProduct_Click">Products</Button>
+                <Button Margin="20,20" Background="#3E454C" Height="50" Foreground="White" FontSize="20" Name="btnProject" Click="btnProject_Click">Project</Button>
+                <Image Margin="10,40" Height="150" Width="150" Source="Resources/logo.png"/>
+
+
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="1" Margin="2" Visibility="Visible" Background="WhiteSmoke" Name="HomPanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+            <StackPanel Background="White" HorizontalAlignment="Stretch">
+                <Label FontSize="32" FontWeight="Heavy"  Margin="0,50,0,0" HorizontalAlignment="Center">Welcome to my Project</Label>
+                <Image Source="Resources/connection.jpg"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Margin="2" Visibility="Collapsed" Background="WhiteSmoke" Name="EmployeePanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+            <StackPanel HorizontalAlignment="Stretch" Margin="15" >
+                <DataGrid ItemsSource="{Binding Employees}" Margin="5" Name="EmployeeGrid" ColumnWidth="*" CanUserAddRows="False" MinColumnWidth="100" CanUserResizeColumns="True" SelectedItem="{Binding SelectedEmployee}">
+                    
+                </DataGrid>
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <DockPanel HorizontalAlignment="Center" Margin="20" Grid.Row="1">
+                        <Button Margin="10" Height="50" Width="150" Background="LightGreen" Name="btnAddEmployee" Click="btnAddEmployee_Click">Add Employee</Button>
+                        <Button Margin="10" Height="50" Width="150" Background="LightCoral" Name="btnDeleteEmployee" Click="btnDeleteEmployee_Click">Delete Employee</Button>
+                        <Button Margin="10" Height="50" Width="150" Background="LightBlue" Name="btnEditEmployee" Click="btnEditEmployee_Click">Edit Employee</Button>
+                    </DockPanel>
+                    
+                </Grid>
+            </StackPanel>
+        </Border>
+
+
+        <Border Grid.Column="1" Margin="2" Visibility="Collapsed" Background="WhiteSmoke" Name="CustomersPanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+            <StackPanel HorizontalAlignment="Stretch" Margin="15" >
+                <DataGrid ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"  Margin="5" Name="CustomerGrid" ColumnWidth="*" CanUserAddRows="False" MinColumnWidth="100" CanUserResizeColumns="True" >
+
+                </DataGrid>
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <DockPanel HorizontalAlignment="Center" Margin="20" Grid.Row="1">
+                        <Button Margin="10" Height="50" Width="150" Background="LightGreen" Name="btnAddCustomer" Click="btnAddCustomer_Click">Add Customer</Button>
+                        <Button Margin="10" Height="50" Width="150" Background="LightCoral" Name="btnDeleteCustomer" Click="btnDeleteCustomer_Click">Delete Customer</Button>
+                        <Button Margin="10" Height="50" Width="150" Background="LightBlue" Name="btnEditCustomer" Click="btnEditCustomer_Click">Edit Customer</Button>
+                    </DockPanel>
+
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Margin="2" Visibility="Collapsed" Background="WhiteSmoke" Name="ProductsPanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+            <StackPanel HorizontalAlignment="Stretch" Margin="15" >
+                <DataGrid ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct,Mode=TwoWay}" Margin="5"  Name="ProductGrid" ColumnWidth="*" CanUserAddRows="False" MinColumnWidth="100" CanUserResizeColumns="True">
+
+                </DataGrid>
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <DockPanel HorizontalAlignment="Center" Margin="20" Grid.Row="1">
+                        <Button Margin="10" Height="50" Width="150" Background="LightGreen" Name="btnAddProduct" Click="btnAddProduct_Click">Add Product</Button>
+                        <Button Margin="10" Height="50" Width="150" Background="LightCoral" Name="btnDeleteProduct" Click="btnDeleteProduct_Click">Delete Product</Button>
+                        <Button Margin="10" Height="50" Width="150" Background="LightBlue" Name="btnEditProduct" Click="btnEditProduct_Click">Edit Product</Button>
+                    </DockPanel>
+
+                </Grid>
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="1" Margin="2" Visibility="Collapsed" Background="WhiteSmoke" Name="ProjectPanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+            <StackPanel HorizontalAlignment="Stretch" Margin="15">
+
+                <!-- ✅ Project List -->
+                <DataGrid ItemsSource="{Binding Projects}" 
+                  SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                  AutoGenerateColumns="False"
+                  SelectionMode="Single"
+                  Margin="5" 
+                  Name="ProjectGrid"
+                  CanUserAddRows="False" 
+                  MinColumnWidth="100" 
+                  CanUserResizeColumns="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Project Name" Binding="{Binding Title}" Width="*"/>
+                        <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate}" Width="Auto"/>
+                        <DataGridTextColumn Header="End Date" Binding="{Binding EndDate}" Width="Auto"/>
+                        <DataGridTextColumn Header="Customer" Binding="{Binding Customer.CustomerName}" Width="*"/>
+                        <DataGridTextColumn Header="Product" Binding="{Binding Product.ProductName}" Width="*"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status.StatusName}" Width="Auto"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!-- ✅ Project Actions -->
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <DockPanel HorizontalAlignment="Center" Margin="20" Grid.Row="1">
+                        <Button Margin="10" Height="50" Width="150" Background="LightGreen" Name="btnAddProject" Click="btnAddProject_Click">Add Project</Button>
+                        <Button Margin="10" Height="50" Width="150" Background="LightCoral" Name="btnDeleteProject" Click="btnDeleteProject_Click">Delete Project</Button>
+                        <Button Margin="10" Height="50" Width="150" Background="LightBlue" Name="btnEditProject" Click="btnEditProject_Click">Edit Project</Button>
+                    </DockPanel>
+
+                </Grid>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>
